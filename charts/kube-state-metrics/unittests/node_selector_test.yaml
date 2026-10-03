@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/helm-unittest/helm-unittest/main/schema/helm-testsuite.json
+suite: test linux nodeSelector default
+templates:
+  - deployment.yaml
+tests:
+  - it: schedules the deployment on linux nodes by default
+    asserts:
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            kubernetes.io/os: linux
+
+  - it: schedules the statefulset on linux nodes by default when autosharding is enabled
+    set:
+      autosharding:
+        enabled: true
+    asserts:
+      - isKind:
+          of: StatefulSet
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            kubernetes.io/os: linux
+
+  - it: adds user nodeSelector keys to the linux default
+    set:
+      nodeSelector:
+        node-role.kubernetes.io/monitoring: "true"
+    asserts:
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            kubernetes.io/os: linux
+            node-role.kubernetes.io/monitoring: "true"
+
+  - it: keeps a user value for kubernetes.io/os
+    set:
+      nodeSelector:
+        kubernetes.io/os: custom
+    asserts:
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            kubernetes.io/os: custom

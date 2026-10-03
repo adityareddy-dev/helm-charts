@@ -45,6 +45,12 @@ You can upgrade in-place:
 
 1. [upgrade](#upgrading-chart) your existing release name using the new chart repository
 
+## Upgrading to v9.0.0
+
+`nodeSelector` now defaults to `kubernetes.io/os: linux`, so kube-state-metrics is no longer scheduled onto Windows nodes in mixed clusters.
+The pod spec changes, so the pods restart once on upgrade, every replica when autosharding is enabled.
+Helm merges maps, so a `nodeSelector` you already set keeps its keys and gains `kubernetes.io/os: linux`.
+
 ## Upgrading to v8.0.0
 
 This version drops support for configuring `CiliumNetworkPolicy` as it is a vendor specific resource.
