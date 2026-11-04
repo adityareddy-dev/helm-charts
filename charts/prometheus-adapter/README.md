@@ -161,4 +161,4 @@ rules:
     window: 3m
 ```
 
-**NOTE:** Setting a value for `rules.resource` will also deploy the resource metrics API service, providing the same functionality as [metrics-server](https://github.com/helm/charts/tree/master/stable/metrics-server). As such it is not possible to deploy them both in the same cluster.
+**NOTE:** Setting a value for `rules.resource` will also deploy the resource metrics API service, providing the same functionality as [metrics-server](https://github.com/kubernetes-sigs/metrics-server/tree/master/charts/metrics-server). As such it is not possible to deploy them both in the same cluster.
