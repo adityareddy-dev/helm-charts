@@ -1,6 +1,6 @@
 # Prometheus Adapter
 
-Installs the [Prometheus Adapter](https://github.com/kubernetes-sigs/prometheus-adapter) for the Custom Metrics API. Custom metrics are used in Kubernetes by [Horizontal Pod Autoscalers](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) to scale workloads based upon your own metric pulled from an external metrics provider like Prometheus. This chart complements the [metrics-server](https://github.com/helm/charts/tree/master/stable/metrics-server) chart that provides resource only metrics.
+Installs the [Prometheus Adapter](https://github.com/kubernetes-sigs/prometheus-adapter) for the Custom Metrics API. Custom metrics are used in Kubernetes by [Horizontal Pod Autoscalers](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) to scale workloads based upon your own metric pulled from an external metrics provider like Prometheus. This chart complements the [metrics-server](https://github.com/kubernetes-sigs/metrics-server/tree/master/charts/metrics-server) chart that provides resource only metrics.
 
 ## Prerequisites
 
@@ -13,7 +13,7 @@ The chart is distributed as an [OCI Artifact](https://helm.sh/docs/topics/regist
 - OCI Artifact: `oci://ghcr.io/prometheus-community/charts/prometheus-adapter`
 - Helm Repository: `https://prometheus-community.github.io/helm-charts` with chart `prometheus-adapter`
 
-The installation instructions use the OCI registry. Refer to the [`helm repo`]([`helm repo`](https://helm.sh/docs/helm/helm_repo/)) command documentation for information on installing charts via the traditional repository.
+The installation instructions use the OCI registry. Refer to the [`helm repo`](https://helm.sh/docs/helm/helm_repo/) command documentation for information on installing charts via the traditional repository.
 
 ### Install Helm Chart
 
@@ -61,7 +61,7 @@ Due to a change in deployment labels, the upgrade requires `helm upgrade --force
 
 ## Configuration
 
-See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
+See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus-adapter/values.yaml), or run these configuration commands:
 
 ```console
 helm show values oci://ghcr.io/prometheus-community/charts/prometheus-adapter
